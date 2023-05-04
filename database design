@@ -1,0 +1,37 @@
+Project requirements: 
+
+create a simple market place for bank and loan borrowers
+
+Database Schema
+
+    Bank Table:
+        BankID (Primary Key)
+        BankName
+        IFSCCode
+
+    Borrower Table:
+        BorrowerID (Primary Key)
+        BorrowerName
+        PhoneNumber
+        PANCard
+        BankID (Foreign Key)
+
+    Loan Table:
+        LoanID (Primary Key)
+        LoanAmount
+        InterestRate
+        LoanTerm
+        EMIAmount
+        TotalInterest
+        TotalAmount
+        BorrowerID (Foreign Key)
+
+    Payment Table:
+        PaymentID (Primary Key)
+        PaymentDate
+        PaymentAmount
+        PaymentType (EMI or Lump Sum)
+        LoanID (Foreign Key)
+        
+        
+        
