@@ -1,0 +1,29 @@
+CREATE TABLE Bank (
+    BankID SERIAL PRIMARY KEY,
+    BankName VARCHAR(255),
+    IFSCCode VARCHAR(255)
+);
+CREATE TABLE Borrower (
+    BorrowerID SERIAL PRIMARY KEY,
+    BorrowerName VARCHAR(255),
+    PhoneNumber VARCHAR(255),
+    PANCard VARCHAR(255),
+    BankID INTEGER REFERENCES Bank(BankID)
+);
+CREATE TABLE Loan (
+    LoanID SERIAL PRIMARY KEY,
+    LoanAmount DECIMAL(10,2),
+    InterestRate DECIMAL(4,2),
+    LoanTerm INTEGER,
+    EMIAmount DECIMAL(10,2),
+    TotalInterest DECIMAL(10,2),
+    TotalAmount DECIMAL(10,2),
+    BorrowerID INTEGER REFERENCES Borrower(BorrowerID)
+);
+CREATE TABLE Payment (
+    PaymentID SERIAL PRIMARY KEY,
+    PaymentDate TIMESTAMP,
+    PaymentAmount DECIMAL(10,2),
+    PaymentType VARCHAR(255),
+    LoanID INTEGER REFERENCES Loan(LoanID)
+);
